@@ -1,13 +1,10 @@
 import { showAlert } from "./alerts.js";
 const updateMe = async ({ name, email }) => {
   try {
-    const { data } = await axios.patch(
-      "http://localhost:5000/api/v1/users/updateMe",
-      {
-        name,
-        email,
-      }
-    );
+    const { data } = await axios.patch("/api/v1/users/updateMe", {
+      name,
+      email,
+    });
 
     if (data.status === "success") {
       showAlert(

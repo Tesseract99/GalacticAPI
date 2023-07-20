@@ -5,14 +5,11 @@ const updatePassword = async ({
   newConfirmPassword,
 }) => {
   try {
-    const { data } = await axios.patch(
-      "http://localhost:5000/api/v1/users/updatePassword",
-      {
-        currentPassword,
-        newPassword,
-        newConfirmPassword,
-      }
-    );
+    const { data } = await axios.patch("/api/v1/users/updatePassword", {
+      currentPassword,
+      newPassword,
+      newConfirmPassword,
+    });
 
     if (data.status === "success") {
       showAlert("success", "Password Updated Successfully! Redirecting.");

@@ -14,6 +14,7 @@ const errorController = require("./controller/errorController");
 const path = require("path");
 const viewRouter = require("./routes/viewRouter");
 const cookieParser = require("cookie-parser");
+const compression = require("compression");
 
 const limiter = rateLimit({
   //max 100 requests per hour
@@ -49,6 +50,7 @@ app.use(
 // app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
+app.use(compression());
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
