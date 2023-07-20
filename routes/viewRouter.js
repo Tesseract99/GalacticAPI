@@ -7,7 +7,7 @@ const router = express.Router();
 // use this middleware for all view related routes
 // router.use(authController.isLoggedIn);
 
-router.get("/", authController.protect, viewsController.getOverview);
+router.get("/", viewsController.getOverview);
 router.get("/tour/:slug", authController.isLoggedIn, viewsController.getTour);
 router.get("/login", authController.isLoggedIn, viewsController.getLoginForm);
 router.get("/me", authController.isLoggedIn, viewsController.getAccount);
