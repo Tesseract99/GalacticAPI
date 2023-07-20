@@ -27,8 +27,19 @@ router
     authController.protect,
     authController.updatePassword
   )
-  .patch("/updateMe", authController.protect, userController.updateMe)
-  .delete("/deleteMe", authController.protect, userController.deleteMe)
+  .patch(
+    "/updateMe",
+    authController.protect,
+    userController.uploadUserPhoto,
+    userController.resizeUserPhoto,
+    userController.updateMe
+  )
+  .delete(
+    "/deleteMe",
+    authController.protect,
+
+    userController.deleteMe
+  )
   .get("/:id", authController.protect, userController.getUser)
   .patch("/:id", authController.protect, userController.updateUser)
   .delete("/:id", authController.protect, userController.deleteUser);
