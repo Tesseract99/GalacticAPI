@@ -24,6 +24,7 @@ const sendJwtToken = (statusCode, user, res) => {
   };
   user.password = undefined;
   cookieOptions.secure = process.env.NODE_ENV === "production"; //make it secure only in production
+  res.locals.user = user;
   res
     .status(statusCode)
     .cookie("jwt", token, cookieOptions)

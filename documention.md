@@ -2,7 +2,7 @@
 
 ### 1. protect middleware
 
-- To Check the Token sent in request during Login
+- Strict check to make sure token is present in the request. if no token - 401
 - Makes sure the request has either the Bearer Token (Postman testing) or JWT cookie.
 - Decodes the JWT token.
 - Fetch the user from the DB, using the \_id obtained from the decoded token.
@@ -13,9 +13,9 @@
 
 ### 2. isLoggedIn middleware
 
-- To Verify the Token sent during every other request.
-- Makes sure the request has JWT cookie.
-- If the JWT val is specifically `loggedoutval`, jump to next middleware.
+- Unlike protect, isLoggedIn lets you get through even though req didn't have a token.
+- If there is a token, it inserts the user details in the response.
+- If the JWT val is specifically `loggedoutval`, it proceeds without any processing of token
 - Else, Decodes the JWT token.
 - Fetch the user from the DB, using the \_id obtained from the decoded token.
 - Makes sure password was NOT changed after this token was issued.
