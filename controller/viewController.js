@@ -12,7 +12,8 @@ exports.getOverview = catchAsync(async (req, res, next) => {
   res
     .setHeader(
       "Content-Security-Policy",
-      "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      // "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      "default-src *"
     )
     .status(200)
     .render("overview", {
@@ -38,7 +39,9 @@ exports.getTour = catchAsync(async (req, res, next) => {
   res
     .setHeader(
       "Content-Security-Policy",
-      "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      // "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      // "default-src *"
+      "default-src * style-src 'self' 'unsafe-inline';"
     )
     .status(200)
     .render("tour", {
@@ -51,7 +54,8 @@ exports.getLoginForm = (req, res) => {
   res
     .setHeader(
       "Content-Security-Policy",
-      "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      // "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      "default-src *"
     )
     .status(200)
     .render("login", {
@@ -63,7 +67,8 @@ exports.getAccount = (req, res) => {
   res
     .setHeader(
       "Content-Security-Policy",
-      "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      // "script-src-elem 'self' https://cdnjs.cloudflare.com"
+      "default-src *"
     )
     .status(200)
     .render("account", {

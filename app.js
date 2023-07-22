@@ -4,6 +4,7 @@ const rateLimit = require("express-rate-limit");
 const tourRouter = require("./routes/tourRoutes");
 const userRouter = require("./routes/userRoutes");
 const reviewRouter = require("./routes/reviewRoutes");
+const bookingsRouter = require("./routes/bookingsRoutes");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
@@ -77,6 +78,7 @@ app.use("/api", limiter);
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reviews", reviewRouter);
+app.use("/api/v1/bookings", bookingsRouter);
 
 app.use("*", (req, res, next) => {
   next(new AppError(`Oops. ${req.originalUrl} not found`, 404)); //a next with an arg will call the error middleware
