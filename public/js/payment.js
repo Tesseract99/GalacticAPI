@@ -14,9 +14,9 @@ const paymentSuccessHandler = async function (response) {
   if (data.status === "success") {
     showAlert("success", " ✅  Payment Successfull. Redirecting");
     window.setTimeout(() => {
-      location.assign("/");
+      location.assign("/my-tours");
     }, 1500);
-  } else showAlert("error", "   Payment Validation Failed.");
+  } else showAlert("error", "Payment Validation Failed.");
 };
 
 const bookTour = async (e, tourId) => {

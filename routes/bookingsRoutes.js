@@ -7,7 +7,15 @@ const bookingController = require("../controller/bookingsController");
 router.use(authController.protect);
 
 router
-  .get("/checkout-session/:tourId", bookingController.createCheckoutSession)
-  .post("/payment-success/", bookingController.paymentSuccess);
+  .get(
+    "/checkout-session/:tourId",
+    authController.protect,
+    bookingController.createCheckoutSession
+  )
+  .post(
+    "/payment-success/",
+    authController.protect,
+    bookingController.paymentSuccess
+  );
 
 module.exports = router;
